@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <cstdint>
+#include <stdexcept>
 #include <vector>
 
 #include "base85ed.h"
@@ -17,7 +18,7 @@ TEST(Base85Test, EncodesAndDecodesEmptyVector)
 
 TEST(Base85Test, EncodesAndDecodesFourBytes)
 {
-    std::vector<uint8_t> data = {1, 2, 3, 4};
+    std::vector<uint8_t> data{1, 2, 3, 4};
 
     auto encoded = base85::encode(data);
     auto decoded = base85::decode(encoded);
@@ -27,7 +28,7 @@ TEST(Base85Test, EncodesAndDecodesFourBytes)
 
 TEST(Base85Test, EncodesAndDecodesPartialBlock)
 {
-    std::vector<uint8_t> data = {1, 2, 3};
+    std::vector<uint8_t> data{1, 2, 3};
 
     auto encoded = base85::encode(data);
     auto decoded = base85::decode(encoded);
@@ -37,7 +38,7 @@ TEST(Base85Test, EncodesAndDecodesPartialBlock)
 
 TEST(Base85Test, EncodesAndDecodesLongData)
 {
-    std::vector<uint8_t> data = {
+    std::vector<uint8_t> data{
         0, 1, 2, 3, 4, 5, 6, 7,
         8, 9, 10, 11, 12, 13
     };
@@ -50,7 +51,7 @@ TEST(Base85Test, EncodesAndDecodesLongData)
 
 TEST(Base85Test, ThrowsOnInvalidLength)
 {
-    std::vector<uint8_t> invalid = {'!'};
+    std::vector<uint8_t> invalid{'!'};
 
     EXPECT_THROW(base85::decode(invalid), std::invalid_argument);
 }
