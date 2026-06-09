@@ -39,8 +39,7 @@ TEST(GaussSolve, SolvesThreeByThreeSystem)
     1.0, -1.0, 2.0, 4.0;
 
     GaussVector expected(3);
-    expected << 2.0, 3.0, 2.0;
-
+    expected << 17.0 / 12.0, 9.0 / 4.0, 29.0 / 12.0;
     expect_vector_near(Gauss_solve(ab), expected);
 }
 
