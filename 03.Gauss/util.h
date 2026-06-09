@@ -1,5 +1,6 @@
-#include <iosfwd>
+#pragma once
 
+#include <iosfwd>
 #include <Eigen/Dense>
 
 typedef Eigen::VectorXd /* Eigen::Matrix<double, Eigen::Dynamic, 1> */ GaussVector;
